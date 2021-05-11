@@ -6,7 +6,7 @@
 
 <script>
 export default {
-
+//prueba2
 }
 </script>
 
