@@ -1,6 +1,6 @@
 <template>
   <div>
-      <h1>Header</h1>
+      <h1>tuServicio</h1>
       <hr>
       <hr>
   </div>

@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Index msg="Header"/>
+    <Index msg="tuServicio"/>
    <b-row>
      <b-col>
        
