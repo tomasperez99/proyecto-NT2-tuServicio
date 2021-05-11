@@ -7,6 +7,8 @@
       <img src="https://i.imgur.com/5zBUTBa.png" alt="Avatar" class="avatar">
     </div>
 
+    //prueba
+
     <div class="container">
       <label for="uname"><b>Username</b></label>
       <input type="text" placeholder="Enter Username" name="uname" required>
