@@ -9,13 +9,15 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 import Serie from './components/Serie.vue'
 import vistaTrabajador from './components/vistaTrabajador.vue'
 import Login from './components/Login.vue'
+import crearSolicitud from './components/crearSolicitud.vue'
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 
 const routes = [
   {path:'/series',component:Serie},
   {path:'/username',component:vistaTrabajador},
-  {path:'/Login',component:Login}
+  {path:'/Login',component:Login},
+  {path:'/crearSolicitud',component:crearSolicitud}
 ]
 import Router from 'vue-router'
 Vue.use(Router) 

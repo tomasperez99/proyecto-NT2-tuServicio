@@ -4,7 +4,7 @@
    <b-row>
      <b-col>
        
-       <router-link to="/series">Ruta #1</router-link>
+       <router-link to="/crearSolicitud">Crear Solicitud de Servicio</router-link>
        <br>
        <router-link to="/peliculas">Ruta #2</router-link>
      </b-col>
