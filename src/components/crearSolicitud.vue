@@ -6,12 +6,12 @@
          <b-col></b-col>
      </b-container>
      <div>
-         <label class="labelForm">Sevicio requerido</label>
+         <label class="labelForm">Servicio requerido</label>
          <button type="button" class="btn btn-primary">Albañileria</button>
          <button type="button" class="btn btn-primary">Limpieza</button>
          <button type="button" class="btn btn-primary">Mudanza</button>
          <button type="button" class="btn btn-primary">Electricista</button>
-         <button type="button" class="btn btn-primary">Plomria</button>
+         <button type="button" class="btn btn-primary">Plomeria</button>
          <button type="button" class="btn btn-primary">Tecnico IT</button>
      </div>
      <div><label></label></div>
@@ -57,7 +57,7 @@
         <input type="text" placeholder="Ingrese la cantidad de horas en numeros" min="1" max="12">
      </div>
      <div><label></label></div>
-     <label class="labelForm">Elija en donde requiere el sevicio</label>
+     <label class="labelForm">Elija en donde requiere el servicio</label>
      <div>
         <input type="text">
      </div>
