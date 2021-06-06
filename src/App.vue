@@ -4,7 +4,7 @@
     <div id="app">
         <div class="mainRouter">
             <router-view></router-view>
-            <router-link to="/TrabajadoresDisponibles">Vista trabajadores</router-link>
+            
         </div>
     </div>
   </div>
