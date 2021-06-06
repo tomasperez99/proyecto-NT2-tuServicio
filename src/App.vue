@@ -5,8 +5,6 @@
    <b-row>
      <b-col>
       
-       <br>
-      
      </b-col>
      <b-col>
        <router-view></router-view>
