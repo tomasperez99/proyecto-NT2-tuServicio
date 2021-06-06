@@ -4,17 +4,23 @@
   <table class="center">
   <tr>
     <td>
-      <select v-model="selected">
+      <select width="auto" v-model="selected">
       <option disabled value="">Seleccione un elemento</option>
       <option>Busco Servicios</option>
       <option>Busco Trabajo</option>
       </select>
     </td>
-    <td>
-      <input type="text">
-    </td>
+    <td id="busquedaIndex">
+        <input size="40" type="text">
+    </td>    
   </tr>
-    
+  
+  <div>
+        <td>
+        
+        </td>
+  </div>
+
 </table>
 
 </div>
@@ -55,4 +61,10 @@ a {
   margin-left: auto;
   margin-right: auto;
 }
+
+#busquedaIndex{
+    padding-left: 20px;
+    width: 150px;
+}
+
 </style>

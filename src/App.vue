@@ -1,31 +1,32 @@
 <template>
   <div id="app">
-    <Index msg="tuServicio"/>
+    <NavBar/>
+    <Index msg = "Tu Servicio"/>
    <b-row>
      <b-col>
-       
-       <router-link to="/crearSolicitud">Crear Solicitud de Servicio</router-link>
+      
        <br>
-       <router-link to="/peliculas">Ruta #2</router-link>
+      
      </b-col>
      <b-col>
        <router-view></router-view>
      </b-col>
      <b-col>
-       <router-link to="/login" tag="button" style="width:auto;">>Ingresar</router-link>
+       
      </b-col>
    </b-row>
-    <hr>
   </div>
   
 </template>
 
 <script>
+import NavBar from './components/NavBar'
 import Index from './components/Index'
 export default {
   name: "App",
   components:{
-    Index
+      NavBar,
+      Index
   }
 };
 </script>
