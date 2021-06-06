@@ -19,6 +19,9 @@
             <br>
             <br>
             <div>
+                <b-row>
+                    <button @click="getTrabajadores">Traer usuarios</button>
+                </b-row>
                 <b-container>
                     <b-row>
                         <b-col> 
@@ -34,36 +37,22 @@
                             </div>
                         </b-col>
                         <b-col>
-                            <div class="divTrabajador">
+                            <div class="divTrabajador" v-for="trabajador in trabajadores" :key="trabajador.id">
                                 <div class="divTrabajadorNombre">
-                                    <a>Nombre.Trabajador</a>
+                                    <a>{{ trabajador.nombre }}</a>
                                 </div>
                                 <br>
                                 <img class= "imgAvatar" src="https://t3.ftcdn.net/jpg/01/18/01/98/360_F_118019822_6CKXP6rXmVhDOzbXZlLqEM2ya4HhYzSV.jpg" >
                                 <div>   
-                                    <p>Trabajador.Desc</p>
+                                    <p>{{trabajador.desc}}</p>
                                     <br>
                                     <p>Trabajador.Rubro</p>
                                     <br>
-                                    <p>Trabajador.Mail</p>
+                                    <p>{{trabajador.mail}}</p>
                                 </div>
                                 <br>
                             </div>
-                            <div class="divTrabajador">
-                                <div class="divTrabajadorNombre">
-                                    <a>Nombre.Trabajador</a>
-                                </div>
-                                <br>
-                                <img class= "imgAvatar" src="https://t3.ftcdn.net/jpg/01/18/01/98/360_F_118019822_6CKXP6rXmVhDOzbXZlLqEM2ya4HhYzSV.jpg" >
-                                <div>   
-                                    <p>Trabajador.Desc</p>
-                                    <br>
-                                    <p>Trabajador.Rubro</p>
-                                    <br>
-                                    <p>Trabajador.Mail</p>
-                                </div>
-                                <br>
-                            </div>
+                            
                         </b-col>
                         <b-col></b-col>
                     </b-row>
@@ -73,9 +62,26 @@
     </div>
 </template>
 <script>
+import axios from 'axios'
 export default {
-    
+    data(){
+        return{
+            trabajadores: [],
+            url: "https://60bd1cd7b8ab3700175a0245.mockapi.io/Trabajadores"
+        }
+    },
+    methods: {
+        getTrabajadores(){
+            axios.get(this.url)
+            .then((response)=>{
+                this.trabajadores = response.data
+            })
+            .catch()
+            
+        }
+    }
 }
+
 </script>
 <style >
     td{
