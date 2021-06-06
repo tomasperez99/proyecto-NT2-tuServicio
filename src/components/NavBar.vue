@@ -1,0 +1,44 @@
+<template>
+  <div class="topnav">
+      <router-link class="active" to="/Index">Inicio</router-link>
+      <router-link to="/crearSolicitud">Crear Solicitud</router-link>
+      <router-link to="/vistaTrabajador">Vista Trabajador</router-link>
+      <router-link to="/login" id='loginButton'>Ingresar</router-link>
+  </div>
+</template>
+
+<script>
+export default {
+}
+</script>
+
+<style>
+.topnav {
+  background-color: #333;
+  overflow: hidden;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #1E90FF;
+  color: white;
+}
+
+#loginButton{
+    float: right;
+}
+
+</style>
