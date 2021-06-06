@@ -3,6 +3,7 @@
       <router-link to="/Index">Inicio</router-link>
       <router-link to="/crearSolicitud">Crear Solicitud</router-link>
       <router-link to="/vistaTrabajador">Vista Trabajador</router-link>
+      <router-link to="/Login">Ingresar</router-link>
   </div>
 </template>
 
