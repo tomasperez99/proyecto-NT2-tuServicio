@@ -1,15 +1,15 @@
 <template>
   <div class="topnav">
-      <router-link class="active" to="/Index">Inicio</router-link>
+      <router-link to="/Index">Inicio</router-link>
       <router-link to="/crearSolicitud">Crear Solicitud</router-link>
       <router-link to="/vistaTrabajador">Vista Trabajador</router-link>
-      <router-link to="/login" id='loginButton'>Ingresar</router-link>
   </div>
 </template>
 
 <script>
 export default {
 }
+
 </script>
 
 <style>
@@ -32,13 +32,10 @@ export default {
   color: black;
 }
 
-.topnav a.active {
+#loginButton {
+  float: right;
   background-color: #1E90FF;
   color: white;
-}
-
-#loginButton{
-    float: right;
 }
 
 </style>

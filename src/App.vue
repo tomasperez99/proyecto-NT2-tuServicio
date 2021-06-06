@@ -1,32 +1,20 @@
 <template>
-  <div id="app">
+  <div>
     <NavBar/>
-    <Index msg = "Tu Servicio"/>
-   <b-row>
-     <b-col>
-      
-       <br>
-      
-     </b-col>
-     <b-col>
-       <router-view></router-view>
-     </b-col>
-     <b-col>
-       
-     </b-col>
-   </b-row>
+    <div id="app">
+        <div class="mainRouter">
+            <router-view></router-view>
+        </div>
+    </div>
   </div>
-  
 </template>
 
 <script>
 import NavBar from './components/NavBar'
-import Index from './components/Index'
 export default {
   name: "App",
   components:{
       NavBar,
-      Index
   }
 };
 </script>
@@ -34,22 +22,21 @@ export default {
 
 
 <style>
+
+.mainRouter {
+    margin-left: auto;
+    margin-right: auto;
+    width: 700px;
+}
+
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 30px;
 }
-
-#fotoHeader{
-  
-  color: aqua;
-  
-
-}
-
-
 
 </style>
