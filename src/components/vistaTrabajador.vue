@@ -23,11 +23,6 @@
                     <li><i class="icono fas fa-briefcase"></i> Precio: </li>
                 </ul>
             </div>
-            <div class="redes-sociales">
-                <a href="" class="boton-redes facebook fab fa-facebook-f"><i class="icon-facebook"></i></a>
-                <a href="" class="boton-redes twitter fab fa-twitter"><i class="icon-twitter"></i></a>
-                <a href="" class="boton-redes instagram fab fa-instagram"><i class="icon-instagram"></i></a>
-            </div>
         </div>
         <div class="container p-4">
         <div class="row">
