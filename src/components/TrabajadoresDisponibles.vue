@@ -8,10 +8,14 @@
                 <table >
                     <tr>
                         <td>
-                            <button type="button" class="btn btn-primary">Asistencia Presencial</button>
-                        </td>
-                        <td>
-                            <button type="button" class="btn btn-primary">Asistencia Remota</button>
+                            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                <label class="btn btn-secondary">
+                                    <input type="radio" name="options" id="option1" autocomplete="off" checked> Asistencia Presencial
+                                </label>
+                                <label class="btn btn-secondary">
+                                    <input type="radio" name="options" id="option2" autocomplete="off"> Asistencia Remota
+                                </label>
+                            </div>
                         </td>
                     </tr>
                 </table>
@@ -48,7 +52,7 @@
                                     <br>
                                     <p>Trabajador.Rubro</p>
                                     <br>
-                                    <p>{{trabajador.mail}}</p>
+                                    <a href="">{{trabajador.mail}}</a>
                                 </div>
                                 <br>
                             </div>
@@ -103,7 +107,7 @@ export default {
 
     .divBackround{
         background-color: rgb(240, 240, 240);
-        width: auto;
+        width: 150%;
         border: 10px;
         padding: 50px;
         margin: 20px;
@@ -118,7 +122,7 @@ export default {
         border-radius: 10px;
         background-color: rgb(241, 241, 241);
         display: inline-block;
-        width: auto;
+        width: 120%;
     }
     .divTrabajadorNombre
     {
