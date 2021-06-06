@@ -4,9 +4,6 @@
             <div class="perfil-usuario-portada">
                 <div class="perfil-usuario-avatar">
                     <img src="https://futhead.cursecdn.com/static/img/21/players/239818.png" alt="img-avatar">
-                    <button type="button" class="boton-avatar">
-                        <i class="far fa-image"></i>
-                    </button>
                 </div>
             </div>
         </div>
@@ -18,12 +15,14 @@
             </div>
             <div class="perfil-usuario-footer">
                 <ul class="lista-datos">
-                    <li><i class="icono fas fa-map-signs"></i> Horas Disponibles: </li>
-                    <li><i class="icono fas fa-phone-alt"></i> Localidad: </li>
-                    <li><i class="icono fas fa-briefcase"></i> Precio: </li>
+                    <li>Horas Disponibles: </li>
+                    <li>Localidad: </li>
+                    <li>Precio: </li>
                 </ul>
             </div>
         </div>
+        <div><label></label></div>
+        <h3>CONTACTA SIN COMPROMISO</h3>
         <div class="container p-4">
         <div class="row">
             <div class="col-md-6 offset-md-3">
@@ -122,19 +121,6 @@ export default {};
     width: 100%;
     position: relative;
     border-radius: 50%;
-}
-
-.seccion-perfil-usuario .perfil-usuario-avatar .boton-avatar {
-    position: absolute;
-    left: -2px;
-    top: -2px;
-    border: 0;
-    background-color: #fff;
-    box-shadow: 0 0 12px rgba(0, 0, 0, .2);
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    cursor: pointer;
 }
 
 .seccion-perfil-usuario .perfil-usuario-body {
