@@ -14,7 +14,9 @@
         <input type="text" id="busquedaIndex">
     </td>
     <td>
+      <router-link to="TrabajadoresDisponibles">
         <button type="button" class="btn btn-primary">Buscar</button>
+      </router-link>
     </td>
   </tr>
 
