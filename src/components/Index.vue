@@ -17,14 +17,12 @@
         <button type="button" class="btn btn-primary">Buscar</button>
     </td>
   </tr>
-  
-  <div>
-        <td>
-        
-        </td>
-  </div>
 
 </table>
+<div class="count">
+    <h2>Avisos solicitando profesionales: {{cantAvisos}} </h2>
+    <h2>Profesionales registrados: {{cantProfesionales}}</h2>
+</div>
 
 </div>
 </template>
@@ -37,6 +35,14 @@ export default {
   name: 'Index',
   props: {
     msg: String
+  },
+  computed: {
+      cantProfesionales() {
+          return this.$store.state.cantProfesionales
+      },
+      cantAvisos() {
+          return this.$store.state.cantAvisos
+      }
   }
 }
 </script>
@@ -55,6 +61,10 @@ h1 {
   margin-right: auto;
 }
 
+.count {
+    margin-top: 50px;
+}
+
 #busquedaIndex{
     padding-left: 10px;
     width: 400px;
@@ -64,6 +74,5 @@ h1 {
 #tipoBusqueda {
     padding: 8px;
 }
-
 
 </style>
