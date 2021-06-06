@@ -18,17 +18,41 @@
             </div>
             <div class="perfil-usuario-footer">
                 <ul class="lista-datos">
-                    <li><i class="icono fas fa-map-signs"></i> Horas Disponibles:</li>
-                    <li><i class="icono fas fa-phone-alt"></i> Localidad:</li>
-                    <li><i class="icono fas fa-briefcase"></i> Precio:</li>
+                    <li><i class="icono fas fa-map-signs"></i> Horas Disponibles: </li>
+                    <li><i class="icono fas fa-phone-alt"></i> Localidad: </li>
+                    <li><i class="icono fas fa-briefcase"></i> Precio: </li>
                 </ul>
             </div>
-            <div class="redes-sociales">
-                <a href="" class="boton-redes facebook fab fa-facebook-f"><i class="icon-facebook"></i></a>
-                <a href="" class="boton-redes twitter fab fa-twitter"><i class="icon-twitter"></i></a>
-                <a href="" class="boton-redes instagram fab fa-instagram"><i class="icon-instagram"></i></a>
+        </div>
+        <div class="container p-4">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card animate__animated animate__flipInY">
+                    <div class="card-body">
+                            <div class="form-group">
+                                <input type="text" name= "nombre" class="form-control" placeholder="Nombre"> 
+                            </div>
+
+                           <div class="form-group">
+                                <input type="text" name="email" class="form-control" placeholder="Email">
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" name="telefono" class="form-control" placeholder="Telefono">
+                            </div>
+
+                            <div class="form-group">
+                                <textarea name="message" rows="2" class="form-control" placeholder="Mensaje"></textarea>
+                            </div>
+
+                            <button class="btn btn-primary btn-block">
+                                Enviar
+                            </button>
+                    </div>
+                </div>
             </div>
         </div>
+    </div>
   </section>
 </template>
 
