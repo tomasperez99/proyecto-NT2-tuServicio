@@ -18,7 +18,7 @@ const routes = [
   {path:'/vistaTrabajador',component:vistaTrabajador},
   {path:'/Login',component:Login},
   {path:'/crearSolicitud',component:crearSolicitud},
-  {path: '/Index', component:Index}
+  {path: '/Index', component:Index},
   {path:'/trabajadoresDisponibles',component:TrabajadoresDisponibles}
 ]
 import Router from 'vue-router'
