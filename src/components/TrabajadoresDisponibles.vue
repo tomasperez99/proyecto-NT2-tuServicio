@@ -8,10 +8,14 @@
                 <table >
                     <tr>
                         <td>
-                            <button type="button" class="btn btn-primary">Asistencia Presencial</button>
-                        </td>
-                        <td>
-                            <button type="button" class="btn btn-primary">Asistencia Remota</button>
+                            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                <label class="btn btn-secondary">
+                                    <input type="radio" name="options" id="option1" autocomplete="off" checked> Asistencia Presencial
+                                </label>
+                                <label class="btn btn-secondary">
+                                    <input type="radio" name="options" id="option2" autocomplete="off"> Asistencia Remota
+                                </label>
+                            </div>
                         </td>
                     </tr>
                 </table>
@@ -19,6 +23,9 @@
             <br>
             <br>
             <div>
+                <b-row>
+                    <button @click="getTrabajadores">Traer usuarios</button>
+                </b-row>
                 <b-container>
                     <b-row>
                         <b-col> 
@@ -34,36 +41,22 @@
                             </div>
                         </b-col>
                         <b-col>
-                            <div class="divTrabajador">
+                            <div class="divTrabajador" v-for="trabajador in trabajadores" :key="trabajador.id">
                                 <div class="divTrabajadorNombre">
-                                    <a>Nombre.Trabajador</a>
+                                    <a>{{ trabajador.nombre }}</a>
                                 </div>
                                 <br>
                                 <img class= "imgAvatar" src="https://t3.ftcdn.net/jpg/01/18/01/98/360_F_118019822_6CKXP6rXmVhDOzbXZlLqEM2ya4HhYzSV.jpg" >
                                 <div>   
-                                    <p>Trabajador.Desc</p>
+                                    <p>{{trabajador.desc}}</p>
                                     <br>
                                     <p>Trabajador.Rubro</p>
                                     <br>
-                                    <p>Trabajador.Mail</p>
+                                    <a href="">{{trabajador.mail}}</a>
                                 </div>
                                 <br>
                             </div>
-                            <div class="divTrabajador">
-                                <div class="divTrabajadorNombre">
-                                    <a>Nombre.Trabajador</a>
-                                </div>
-                                <br>
-                                <img class= "imgAvatar" src="https://t3.ftcdn.net/jpg/01/18/01/98/360_F_118019822_6CKXP6rXmVhDOzbXZlLqEM2ya4HhYzSV.jpg" >
-                                <div>   
-                                    <p>Trabajador.Desc</p>
-                                    <br>
-                                    <p>Trabajador.Rubro</p>
-                                    <br>
-                                    <p>Trabajador.Mail</p>
-                                </div>
-                                <br>
-                            </div>
+                            
                         </b-col>
                         <b-col></b-col>
                     </b-row>
@@ -73,9 +66,26 @@
     </div>
 </template>
 <script>
+import axios from 'axios'
 export default {
-    
+    data(){
+        return{
+            trabajadores: [],
+            url: "https://60bd1cd7b8ab3700175a0245.mockapi.io/Trabajadores"
+        }
+    },
+    methods: {
+        getTrabajadores(){
+            axios.get(this.url)
+            .then((response)=>{
+                this.trabajadores = response.data
+            })
+            .catch()
+            
+        }
+    }
 }
+
 </script>
 <style >
     td{
@@ -97,7 +107,7 @@ export default {
 
     .divBackround{
         background-color: rgb(240, 240, 240);
-        width: auto;
+        width: 150%;
         border: 10px;
         padding: 50px;
         margin: 20px;
@@ -112,7 +122,7 @@ export default {
         border-radius: 10px;
         background-color: rgb(241, 241, 241);
         display: inline-block;
-        width: auto;
+        width: 120%;
     }
     .divTrabajadorNombre
     {
