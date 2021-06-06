@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
+import Vuex from 'vuex'
 
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 
@@ -12,6 +13,7 @@ import crearSolicitud from './components/crearSolicitud.vue'
 import Index from './components/Index.vue'
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
+Vue.use(Vuex)
 
 const routes = [
   {path:'/vistaTrabajador',component:vistaTrabajador},
@@ -28,7 +30,19 @@ const router = new Router({
 
 Vue.config.productionTip = false
 
+const store = new Vuex.Store({
+    state: {
+        cantProfesionales: 0,
+        cantAvisos: 0
+    },
+    mutations: {
+        agregarProfesional: state => state.cantProfesionales++,
+        agregarAviso: state => state.cantAvisos++
+    }
+  })
+
 new Vue({
   router,
+  store,
   render: h => h(App),
 }).$mount('#app')
