@@ -17,8 +17,6 @@
      <div><label></label></div>
      <div>
          <label class="labelForm">Necesita que el trabajador asista:</label>
-         <button type="button" class="btn btn-primary">Todas las semanas</button>
-         <button type="button" class="btn btn-primary">Cada 15 dias</button>
          <button type="button" class="btn btn-primary">Unica vez</button>
      </div>
      <div><label></label></div>

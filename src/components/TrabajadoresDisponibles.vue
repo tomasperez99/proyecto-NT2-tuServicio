@@ -83,6 +83,9 @@ export default {
             .catch()
             
         }
+    },
+    created() {
+        this.getTrabajadores()
     }
 }
 
