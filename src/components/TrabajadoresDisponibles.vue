@@ -50,7 +50,7 @@
                                 <div>   
                                     <p>{{trabajador.desc}}</p>
                                     <br>
-                                    <p>{{trabajador.rubro}}</p>
+                                    <p>{{ getRubroByID(trabajador.rubro).nombre }}</p>
                                     <br>
                                     <a href="">{{trabajador.mail}}</a>
                                 </div>
@@ -95,7 +95,14 @@ export default {
             })
             .catch()
             
+        },
+        getRubroByID(id) {
+            let i;
+            for (i = 0; i < this.rubros.length; i++) {
+                if (this.rubros[i].id == id) return this.rubros[i]
+            }
         }
+
     },
     created() {
         this.getTrabajadores()
