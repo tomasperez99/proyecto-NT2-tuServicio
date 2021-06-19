@@ -17,7 +17,7 @@ Vue.use(IconsPlugin)
 Vue.use(Vuex)
 
 const routes = [
-  {path:'/vistaTrabajador',component:vistaTrabajador},
+  {path:'/vistaTrabajador/:id',component:vistaTrabajador},
   {path:'/Login',component:Login},
   {path:'/crearSolicitud',component:crearSolicitud},
   {path: '/Index', component:Index},

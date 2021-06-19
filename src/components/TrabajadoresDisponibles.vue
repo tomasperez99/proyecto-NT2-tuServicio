@@ -43,14 +43,14 @@
                         <b-col>
                             <div class="divTrabajador" v-for="trabajador in trabajadores" :key="trabajador.id">
                                 <div class="divTrabajadorNombre">
-                                    <a>{{ trabajador.nombre }}</a>
+                                   <router-link :to=getRouteTrabajador(trabajador.id)>{{trabajador.nombre}}</router-link>
                                 </div>
                                 <br>
-                                <img class= "imgAvatar" src="https://t3.ftcdn.net/jpg/01/18/01/98/360_F_118019822_6CKXP6rXmVhDOzbXZlLqEM2ya4HhYzSV.jpg" >
+                                <img class= "imgAvatar" :src=trabajador.avatar >
                                 <div>   
                                     <p>{{trabajador.desc}}</p>
                                     <br>
-                                    <p>{{ getRubroByID(trabajador.rubro).nombre }}</p>
+                                    <p>{{ getRubroByID(trabajador.rubro) }}</p>
                                     <br>
                                     <a href="">{{trabajador.mail}}</a>
                                 </div>
@@ -99,8 +99,12 @@ export default {
         getRubroByID(id) {
             let i;
             for (i = 0; i < this.rubros.length; i++) {
-                if (this.rubros[i].id == id) return this.rubros[i]
+                if (this.rubros[i].id == id) return this.rubros[i].nombre
             }
+            return 'Undefined'
+        },
+        getRouteTrabajador(id) {
+            return 'vistaTrabajador/' + id
         }
 
     },
