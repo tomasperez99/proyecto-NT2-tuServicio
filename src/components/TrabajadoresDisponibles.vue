@@ -43,7 +43,7 @@
                         <b-col>
                             <div class="divTrabajador" v-for="trabajador in trabajadores" :key="trabajador.id">
                                 <div class="divTrabajadorNombre">
-                                    <a>{{ trabajador.nombre }}</a>
+                                   <router-link :to=getRouteTrabajador(trabajador.id)>{{trabajador.nombre}}</router-link>
                                 </div>
                                 <br>
                                 <img class= "imgAvatar" src="https://t3.ftcdn.net/jpg/01/18/01/98/360_F_118019822_6CKXP6rXmVhDOzbXZlLqEM2ya4HhYzSV.jpg" >
@@ -101,6 +101,9 @@ export default {
             for (i = 0; i < this.rubros.length; i++) {
                 if (this.rubros[i].id == id) return this.rubros[i]
             }
+        },
+        getRouteTrabajador(id) {
+            return 'vistaTrabajador/' + id
         }
 
     },
