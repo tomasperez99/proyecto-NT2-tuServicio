@@ -14,9 +14,12 @@
             </div>
             <div class="perfil-usuario-footer">
                 <ul class="lista-datos">
-                    <li>Horas Disponibles: </li>
-                    <li>Localidad: {{this.trabajador.localidad}}</li>
+                    <li>Localidad: </li>
                     <li>Precio: </li>
+                </ul>
+                <ul class="lista-datos">
+                    <li>{{this.trabajador.localidad}}</li>
+                    <li>$500/hora</li>
                 </ul>
             </div>
         </div>
