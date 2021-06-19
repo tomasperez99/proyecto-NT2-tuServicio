@@ -50,7 +50,7 @@
                                 <div>   
                                     <p>{{trabajador.desc}}</p>
                                     <br>
-                                    <p>Trabajador.Rubro</p>
+                                    <p>{{ getRubroByID(trabajador.rubro).nombre }}</p>
                                     <br>
                                     <a href="">{{trabajador.mail}}</a>
                                 </div>
@@ -70,22 +70,43 @@ import axios from 'axios'
 export default {
     data(){
         return{
+            
+            url_trabajadores: "https://60bd1cd7b8ab3700175a0245.mockapi.io/Trabajadores",
+            url_rubros: "https://60bd1cd7b8ab3700175a0245.mockapi.io/Rubros",
             trabajadores: [],
-            url: "https://60bd1cd7b8ab3700175a0245.mockapi.io/Trabajadores"
+            rubros: []
+
         }
     },
     methods: {
         getTrabajadores(){
-            axios.get(this.url)
+            axios.get(this.url_trabajadores)
             .then((response)=>{
                 this.trabajadores = response.data
             })
             .catch()
             
+        },
+
+        getRubros(){
+            axios.get(this.url_rubros)
+            .then((response)=>{
+                this.rubros = response.data
+            })
+            .catch()
+            
+        },
+        getRubroByID(id) {
+            let i;
+            for (i = 0; i < this.rubros.length; i++) {
+                if (this.rubros[i].id == id) return this.rubros[i]
+            }
         }
+
     },
     created() {
         this.getTrabajadores()
+        this.getRubros()
     }
 }
 
