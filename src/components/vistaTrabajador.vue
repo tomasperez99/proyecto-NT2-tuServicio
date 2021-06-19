@@ -3,20 +3,19 @@
         <div class="perfil-usuario-header">
             <div class="perfil-usuario-portada">
                 <div class="perfil-usuario-avatar">
-                    <img src="https://futhead.cursecdn.com/static/img/21/players/239818.png" alt="img-avatar">
+                    <img :src=this.trabajador.avatar alt="img-avatar">
                 </div>
             </div>
         </div>
         <div class="perfil-usuario-body">
             <div class="perfil-usuario-bio">
-                <h3 class="titulo">Ruben Dias</h3>
-                <p class="texto">Carpintero con disponibilidad horaria full time dentro de la capital
-        federal</p>
+                <h3 class="titulo">{{this.trabajador.nombre}}</h3>
+                <p class="texto">{{this.trabajador.desc}}</p>
             </div>
             <div class="perfil-usuario-footer">
                 <ul class="lista-datos">
                     <li>Horas Disponibles: </li>
-                    <li>Localidad: </li>
+                    <li>Localidad: {{this.trabajador.localidad}}</li>
                     <li>Precio: </li>
                 </ul>
             </div>
@@ -56,7 +55,29 @@
 </template>
 
 <script>
-export default {};
+import axios from 'axios'
+export default {
+    data() {
+        return {
+            url_trabajadores: "https://60bd1cd7b8ab3700175a0245.mockapi.io/Trabajadores/",
+            trabajador: Object,
+            id: this.$route.params.id
+        }
+    },
+    methods: {
+        getTrabajador(){
+            axios.get(this.url_trabajadores + this.id)
+            .then((response)=>{
+                this.trabajador = response.data
+            })
+            .catch()
+            
+        }
+    },
+    created() {
+        this.getTrabajador()
+    }
+};
 </script>
 
 <style>
