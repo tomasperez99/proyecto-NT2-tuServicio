@@ -47,7 +47,7 @@
                                 <textarea name="message" rows="2" class="form-control" placeholder="Mensaje"></textarea>
                             </div>
 
-                            <button class="btn btn-primary btn-block" onclick="enviarFormulario()">
+                            <button class="btn btn-primary btn-block" v-on:click="enviarFormulario">
                                 Enviar
                             </button>
                     </div>
@@ -79,12 +79,12 @@ export default {
             .catch()
             
         },
-        enviarFormulario(){        
+        enviarFormulario : function (){        
         let nombre = document.getElementById('nombreForm')
         let email = document.getElementById('emailForm')
         let telefono = document.getElementById('telefonoForm')
         
-        if(nombre.value == null || email.value == null || telefono.value == null) {
+        if(nombre.value == '' || email.value ==  ''  || telefono.value ==  '' ) {
             alert("Faltan completar datos")
         }else{
             alert("Trabajador contactado correctamente")
