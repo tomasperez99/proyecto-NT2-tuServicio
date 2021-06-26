@@ -9,15 +9,18 @@
         </div>
         <div class="perfil-usuario-body">
             <div class="perfil-usuario-bio">
-                <h3 class="titulo">Ruben Dias</h3>
-                <p class="texto">Carpintero con disponibilidad horaria full time dentro de la capital
-        federal</p>
+                <h3 class="titulo">{{this.trabajador.nombre}}</h3>
+                <p class="texto">{{this.trabajador.desc}}</p>
             </div>
             <div class="perfil-usuario-footer">
                 <ul class="lista-datos">
                     <li>Horas Disponibles: </li>
                     <li>Localidad: </li>
                     <li>Precio: </li>
+                </ul>
+                <ul class="lista-datos">
+                    <li>{{this.trabajador.localidad}}</li>
+                    <li>$500/hora</li>
                 </ul>
             </div>
         </div>
@@ -58,7 +61,25 @@
 
 
 <script>
-    function enviarFormulario(){        
+import axios from 'axios'
+export default {
+    data() {
+        return {
+            url_trabajadores: "https://60bd1cd7b8ab3700175a0245.mockapi.io/Trabajadores/",
+            trabajador: Object,
+            id: this.$route.params.id
+        }
+    },
+    methods: {
+        getTrabajador(){
+            axios.get(this.url_trabajadores + this.id)
+            .then((response)=>{
+                this.trabajador = response.data
+            })
+            .catch()
+            
+        },
+        enviarFormulario(){        
         let nombre = document.getElementById('nombreForm')
         let email = document.getElementById('emailForm')
         let telefono = document.getElementById('telefonoForm')
@@ -69,7 +90,11 @@
             alert("Trabajador contactado correctamente")
         }
     }
-export default {enviarFormulario};
+    },
+    created() {
+        this.getTrabajador()
+    }
+};
 </script>
 <style>
 .seccion-perfil-usuario .perfil-usuario-body,
