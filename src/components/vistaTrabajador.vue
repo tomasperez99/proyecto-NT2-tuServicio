@@ -29,22 +29,22 @@
                 <div class="card animate__animated animate__flipInY">
                     <div class="card-body">
                             <div class="form-group">
-                                <input type="text" name= "nombre" class="form-control" placeholder="Nombre"> 
+                                <input type="text" class="form-control" placeholder="Nombre" id="nombreForm"> 
                             </div>
 
                            <div class="form-group">
-                                <input type="text" name="email" class="form-control" placeholder="Email">
+                                <input type="text" class="form-control" placeholder="Email" id="emailForm">
                             </div>
 
                             <div class="form-group">
-                                <input type="text" name="telefono" class="form-control" placeholder="Telefono">
+                                <input type="text" class="form-control" placeholder="Telefono" id="telefonoForm">
                             </div>
 
                             <div class="form-group">
                                 <textarea name="message" rows="2" class="form-control" placeholder="Mensaje"></textarea>
                             </div>
 
-                            <button class="btn btn-primary btn-block">
+                            <button class="btn btn-primary btn-block" onclick="enviarFormulario()">
                                 Enviar
                             </button>
                     </div>
@@ -53,12 +53,24 @@
         </div>
     </div>
   </section>
+  
 </template>
 
-<script>
-export default {};
-</script>
 
+<script>
+    function enviarFormulario(){        
+        let nombre = document.getElementById('nombreForm')
+        let email = document.getElementById('emailForm')
+        let telefono = document.getElementById('telefonoForm')
+        
+        if(nombre.value == null || email.value == null || telefono.value == null) {
+            alert("Faltan completar datos")
+        }else{
+            alert("Trabajador contactado correctamente")
+        }
+    }
+export default {enviarFormulario};
+</script>
 <style>
 .seccion-perfil-usuario .perfil-usuario-body,
 .seccion-perfil-usuario {
