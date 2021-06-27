@@ -91,7 +91,7 @@ export default {
     return {
       url_trabajadores: "https://60bd1cd7b8ab3700175a0245.mockapi.io/Trabajadores/",
       url_solicitante: "https://60bd1cd7b8ab3700175a0245.mockapi.io/Solicitante",
-      url_solicitud: "https://60bd1cd7b8ab3700175a0245.mockapi.io/Etidad_Solicitud",
+      url_solicitud: "https://60d8a7d9eec56d0017477414.mockapi.io/Solicitud",
       trabajador: Object,
       id: this.$route.params.id,
     };
@@ -116,6 +116,11 @@ export default {
         if (response.status == 201) {
             let idSolicitante = response.data.id
             console.log('Id Solicitante: ' + idSolicitante)
+            
+            // var fechaAlta = new Date()
+            // fechaAlta = fechaAlta.getDate()
+            // var fechaInicio = 0
+            // var fechaFinalizacion = 0
 
             this.postSolicitud(this.id, idSolicitante, mensaje).then((response) => {
 
