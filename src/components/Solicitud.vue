@@ -6,7 +6,20 @@
             <div v-if="this.success">
                 <h2>Prestador: {{this.trabajador.nombre}}</h2>
                 <h2>Solicitante: {{this.solicitante.nombre}}</h2>
-
+                <h2>Detalle</h2>
+                <textarea id="mensaje" cols="60" rows="5" :placeholder=this.solicitud.mensaje disabled=true></textarea>
+                <b-row>
+                    <b-col>
+                        <h2>Estado: </h2>
+                    </b-col>
+                    <b-col>
+                        <h2 v-if="this.solicitud.estado == 0" style="color: #eff53d">PENDIENTE</h2>
+                        <h2 v-if="this.solicitud.estado == 1" style="color: #43c450">INICIADO</h2>
+                        <h2 v-if="this.solicitud.estado == 2" style="color: #43c450">TERMINADO</h2>
+                        <h2 v-if="this.solicitud.estado == 3" style="color: #eb234e">CANCELADO</h2>
+                    </b-col>
+                </b-row>
+                <button v-if="this.solicitud.estado == 0">Dejar Reseña</button>
             </div>
         </div>
     </div>
@@ -65,6 +78,13 @@ export default {
     }
 }
 </script>
-<style lang="">
-    
+<style lang="css">
+h1 {
+    padding: 25px;
+    border-color:rgb(116, 116, 116);
+    border: 2px solid;
+}
+h2 {
+    padding-top: 25px;
+}
 </style>
