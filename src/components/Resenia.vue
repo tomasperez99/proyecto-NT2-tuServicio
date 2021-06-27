@@ -1,27 +1,36 @@
 <template>
-    <div class="divPadre">
-        <p class="pTittle" align="left">Escribe tu reseña sobre {Trabajador.nombre}</p>
-        <star-rating @rating-selected = "setRating" class="starRating" v-model="rating" :show-rating="false" :star-size="50"></star-rating>
+<div class="divPadre">
+    <div id="mainDiv">
+        <p class="pTittle" align="left">Escribe tu reseña sobre {{trabajador.nombre}}</p>
+        <star-rating id='star' @rating-selected = "setRating" class="starRating" v-model="rating" :show-rating="false" :star-size="50"></star-rating>
+         <label hidden="true" id="labelError" for="star" style="color:red">Ingrese un puntaje válido para la Reseña</label>
         <br>
         <input id="inputDetalle" class="inputText" type="text" placeholder="Contanos tu experiencia...">
         <br>
         <br>
-        <button @click="validarResenia" type="submit" class="buttonPublicar">Publicar</button>
+        <button @click="checkResenia" type="submit" class="buttonPublicar">Publicar</button>
         <router-link to="/Index" >
             <button type="submit" class="buttonCancelar">
             Cancelar
             </button>
         </router-link>
-        
     </div>
+    <div hidden=true id="doneDiv">
+        <h3 style="padding: 25px">Reseña enviada</h3>
+    </div>
+</div>
 </template>
 <script>
 import StarRating from 'vue-star-rating'
+import axios from 'axios'
 export default {
     data() {
         return {
+            url_resenias: "https://60d8a7d9eec56d0017477414.mockapi.io/Resenia/",
             rating: 0,
-            detalle: null
+            detalle: null,
+            trabajador: this.$parent.trabajador,
+            solicitud: this.$parent.solicitud
         }
     },
     components: {
@@ -32,17 +41,30 @@ export default {
             this.rating = rating;
             
         },
-        validarResenia(){
-            if (this.rating == 0){
-                alert("Debes seleccionar un puntaje antes de publicar la reseña.")
-            }else{
-                this.getDetalle()
-            }
-        },
         getDetalle(){
             this.detalle = document.getElementById("inputDetalle").value
+        },
+        checkResenia() {
+            var label = document.getElementById('labelError')
+            if (this.rating > 0) {
+                label.hidden = true
+                this.postResenia()
+                this.getDetalle()
+                this.postResenia()
+                document.getElementById('mainDiv').hidden = true
+                document.getElementById('doneDiv').hidden = false
+            }else {
+                label.hidden = false
+            }
+        },
+        postResenia() {
+            var response = axios.post(this.url_resenias, {
+                idSolicitud: this.solicitud.id,
+                comentario: this.detalle
+            })
+            return response
         }
-    },
+    }
 
 }
 </script>

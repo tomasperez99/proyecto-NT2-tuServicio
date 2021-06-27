@@ -19,14 +19,19 @@
                         <h2 v-if="this.solicitud.estado == 3" style="color: #eb234e">CANCELADO</h2>
                     </b-col>
                 </b-row>
-                <button v-if="this.solicitud.estado == 0">Dejar Reseña</button>
+                <div style="margin-top: 25px">
+                    <button type="button" class="btn btn-primary" v-if="this.solicitud.estado == 3 && !this.showresenia" @click="mostrarResenia()">Dejar Reseña</button>
+                    <Resenia v-if="this.showresenia"></Resenia>
+                </div>
             </div>
         </div>
     </div>
 </template>
 <script>
+import Resenia from './Resenia'
 import axios from "axios";
 export default {
+  components: { Resenia },
     data() {
         return {
             url_solicitud: "https://60d8a7d9eec56d0017477414.mockapi.io/Solicitud/",
@@ -37,6 +42,7 @@ export default {
             trabajador: Object,
             solicitante: Object,
             success: false,
+            showresenia: false,
             header: null
         }
     },
@@ -71,6 +77,10 @@ export default {
                     this.solicitante = response.data;
                 })
                 .catch();
+        },
+        mostrarResenia() {
+            this.showresenia = !this.showresenia
+            console.log(this.showresenia)
         }
     },
     created() {
