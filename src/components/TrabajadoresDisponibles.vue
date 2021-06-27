@@ -4,44 +4,17 @@
         <br>
         <br>
         <div class="divBackround">
-            <div align=center >
-                <table >
-                    <tr>
-                        <td>
-                            <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                <label class="btn btn-secondary">
-                                    <input type="radio" name="options" id="option1" autocomplete="off" checked> Asistencia Presencial
-                                </label>
-                                <label class="btn btn-secondary">
-                                    <input type="radio" name="options" id="option2" autocomplete="off"> Asistencia Remota
-                                </label>
-                            </div>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-            <br>
-            <br>
             <div>
-                <b-row>
-                    <button @click="getTrabajadores">Traer usuarios</button>
-                </b-row>
-                <b-container>
+                    <b-container>
                     <b-row>
                         <b-col> 
-                            <div class="divFiltro">
-                                <p class="pFiltros">Que rubro de servicio estas buscando?</p>
-                                <br>
-                                    <label><input type="checkbox" value="first_checkbox" > Albañileria</label><br>
-                                    <label><input type="checkbox" value="first_checkbox"> Limpieza</label><br>
-                                    <label><input type="checkbox" value="first_checkbox"> Mudanza</label><br>
-                                    <label><input type="checkbox" value="first_checkbox"> Electricista</label><br>
-                                    <label><input type="checkbox" value="first_checkbox"> Plomeria</label><br>
-                                    <label><input type="checkbox" value="first_checkbox"> Tecnico</label><br>      
+                            <div v-for="rubro in rubros" :key="rubro.id">
+                                <input type="checkbox" :id="rubro.desc" :value="rubro.id" v-model="rubrosSeleccionados">
+                                <label :for="rubro.nombre">{{rubro.nombre}}</label>
                             </div>
                         </b-col>
                         <b-col>
-                            <div class="divTrabajador" v-for="trabajador in trabajadores" :key="trabajador.id">
+                            <div class="divTrabajador" v-for="trabajador in trabajadoresFiltrados" :key="trabajador.id">
                                 <div class="divTrabajadorNombre">
                                    <router-link :to=getRouteTrabajador(trabajador.id)>{{trabajador.nombre}}</router-link>
                                 </div>
@@ -74,7 +47,8 @@ export default {
             url_trabajadores: "https://60bd1cd7b8ab3700175a0245.mockapi.io/Trabajadores",
             url_rubros: "https://60bd1cd7b8ab3700175a0245.mockapi.io/Rubros",
             trabajadores: [],
-            rubros: []
+            rubros: [],
+            rubrosSeleccionados: []
 
         }
     },
@@ -92,6 +66,7 @@ export default {
             axios.get(this.url_rubros)
             .then((response)=>{
                 this.rubros = response.data
+                this.clearFilter()
             })
             .catch()
             
@@ -105,9 +80,20 @@ export default {
         },
         getRouteTrabajador(id) {
             return 'vistaTrabajador/' + id
+        },
+        clearFilter() {
+            var i;
+            for (i = 0; i < this.rubros.length; i++) {
+                this.rubrosSeleccionados.push(this.rubros[i].id)
+            }
         }
 
     },
+    computed:{
+    trabajadoresFiltrados(){
+      return this.trabajadores.filter(trabajador => this.rubrosSeleccionados.includes(trabajador.rubro))
+    }
+  },
     created() {
         this.getTrabajadores()
         this.getRubros()
@@ -164,5 +150,9 @@ export default {
         
         padding-bottom: 10%;
         
+    }
+    .checkBox
+    {
+
     }
 </style>
