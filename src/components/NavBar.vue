@@ -2,7 +2,6 @@
   <div class="topnav">
       <router-link to="/Index">Inicio</router-link>
       <router-link to="/crearSolicitud">Crear Solicitud</router-link>
-      <router-link to="/Resenia">Dejar Resenia</router-link>
       <router-link id="loginButton" to="/Login">Ingresar</router-link>
   </div>
 </template>
