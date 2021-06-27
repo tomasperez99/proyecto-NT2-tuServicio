@@ -71,7 +71,7 @@
               </div>
 
               <button
-                v-on:click="enviarSolicitud()"
+                v-on:click="checkSolicitud()"
                 class="btn btn-primary btn-block"
               >
                 Enviar
@@ -104,6 +104,18 @@ export default {
           this.trabajador = response.data;
         })
         .catch();
+    },
+    checkSolicitud() {        
+        let nombre = document.getElementById('nombre')
+        let email = document.getElementById('email')
+        let telefono = document.getElementById('telefono')
+        
+        if(nombre.value == '' || email.value ==  ''  || telefono.value ==  '' ) {
+            alert("Faltan completar datos")
+        }else{
+            alert("Trabajador contactado correctamente")
+            this.enviarSolicitud()
+        }
     },
     enviarSolicitud() {
       let nombre = document.getElementById("nombre").value;
