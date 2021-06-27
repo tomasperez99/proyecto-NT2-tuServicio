@@ -10,6 +10,7 @@
             <b-col id="checkis">
               <div class= "checkBox" v-for="rubro in rubros" :key="rubro.id">
                 <input
+                  class="tilde"
                   type="checkbox"
                   :id="rubro.desc"
                   :value="rubro.id"
@@ -160,8 +161,14 @@ td {
   *overflow: hidden;
   text-align: center;
 }
+.tilde {
+  text-align: left;
+  margin-left: 5px;
+  top: -12px;
+  margin: 1px;
+}
 #checkis {
-padding-top :90px;
+padding-top :99px;
 }
 
 </style>
