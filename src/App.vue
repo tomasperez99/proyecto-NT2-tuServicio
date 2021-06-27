@@ -30,7 +30,7 @@ export default {
 .mainRouter {
     margin-left: auto;
     margin-right: auto;
-    width: 700px;
+    width: 75%;
 }
 
 
