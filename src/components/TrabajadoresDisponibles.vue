@@ -130,7 +130,7 @@ td {
 
 .divBackround {
   background-color: rgb(240, 240, 240);
-  width: 150%;
+  width: 110%;
   border: 10px;
   padding: 50px;
   margin: 20px;
