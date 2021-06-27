@@ -147,7 +147,7 @@ export default {
   },
   created() {
     this.getTrabajador();
-  },
+  }
 };
 </script>
 
