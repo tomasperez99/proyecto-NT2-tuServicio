@@ -8,7 +8,7 @@
                     <b-container>
                     <b-row>
                         <b-col> 
-                            <div v-for="rubro in rubros" :key="rubro.id">
+                            <div class= "checkBox" v-for="rubro in rubros" :key="rubro.id">
                                 <input type="checkbox" :id="rubro.desc" :value="rubro.id" v-model="rubrosSeleccionados">
                                 <label :for="rubro.nombre">{{rubro.nombre}}</label>
                             </div>
@@ -153,6 +153,9 @@ export default {
     }
     .checkBox
     {
-
+        padding: 5%;
+        margin: 5%;
+        width: 100%;
+        border: 10px;
     }
 </style>
