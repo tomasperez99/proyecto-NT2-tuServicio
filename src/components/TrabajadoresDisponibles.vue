@@ -16,7 +16,7 @@
                   :value="rubro.id"
                   v-model="rubrosSeleccionados"
                 />
-                <label :for="rubro.nombre">{{ rubro.nombre }}</label>
+                <label class="rubro" :for="rubro.nombre">{{ rubro.nombre }}</label>
               </div>
             </b-col>
             <b-col>
@@ -166,6 +166,9 @@ td {
   margin-left: 5px;
   top: -12px;
   margin: 1px;
+}
+.rubro{
+  padding-left: 2%;
 }
 #checkis {
 padding-top :99px;
