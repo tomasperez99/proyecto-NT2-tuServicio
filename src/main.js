@@ -12,7 +12,8 @@ import Login from './components/Login.vue'
 import crearSolicitud from './components/crearSolicitud.vue'
 import Index from './components/Index.vue'
 import TrabajadoresDisponibles from './components/TrabajadoresDisponibles.vue'
-import Solicitud from './components/Solicitud'
+import Solicitud from './components/Solicitud.vue'
+import Resenia from './components/Resenia.vue'
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 Vue.use(Vuex)
@@ -23,7 +24,8 @@ const routes = [
   {path:'/crearSolicitud',component:crearSolicitud},
   {path: '/Index', component:Index},
   {path:'/trabajadoresDisponibles',component:TrabajadoresDisponibles},
-  {path: '/Solicitud/:id', component:Solicitud}
+  {path: '/Solicitud/:id', component:Solicitud},
+  {path: '/Resenia', component: Resenia}
 ]
 import Router from 'vue-router'
 Vue.use(Router) 
