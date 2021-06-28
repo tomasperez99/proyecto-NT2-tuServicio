@@ -27,10 +27,10 @@
     <h3>CONTACTA SIN COMPROMISO</h3>
     <div class="container p-4">
       <div class="row">
-        <div class="col-md-6 offset-md-3">
-          <div class="card animate__animated animate__flipInY">
-            <div class="card-body">
-              <div class="form-group">
+        <div style="padding-left:220px" class="col-md-12 offset-md-3">
+          <div class="card animate__animated animate__flipInY" style="width: 400px">
+            <div class="card-body" >
+              <div class="form-group" >
                 <input
                   id="nombre"
                   type="text"

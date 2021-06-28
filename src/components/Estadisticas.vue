@@ -9,15 +9,15 @@
           <h2>Trabajadores mas solicitados</h2>
         </div>
         <div class="card-body" v-for="trabajador in trabajadoresConMasSolicitudes" :key="trabajador">
-            <label>{{trabajador.nombre}}</label>
+            <router-link :to=getRouteTrabajador(trabajador.id)>{{trabajador.nombre}}</router-link>
         </div>
       </div>
       <div class="card">
         <div class="card-header">
           <h2>Trabajadores mejor calificados</h2>
         </div>
-        <div class="card-body" v-for="trabajadorr in trabajadoresMejorRating" :key="trabajadorr">
-            <label>{{trabajadorr.nombre}}</label>
+        <div class="card-body" v-for="trabajador in trabajadoresMejorRating" :key="trabajador">
+            <router-link :to=getRouteTrabajador(trabajador.id)>{{trabajador.nombre}}</router-link>
         </div>
       </div>
       <div class="card">
@@ -85,6 +85,10 @@ export default {
             this.map()
         },
 
+        getRouteTrabajador(id){
+            return '/vistaTrabajador/' + id
+        },
+
         map() {
             let i = 0;
             for (i = 0; i < this.IDTrabajadoresConMasSolicitudes.length; i++) {
@@ -129,7 +133,6 @@ export default {
             }
             
             let aux = [];
-            console.log(ratingsTrabajadores)
             for (i = 0; i < ratingsTrabajadores.length; i++) {
                 aux.push(ratingsTrabajadores[i].rating / ratingsTrabajadores[i].count)
             }
@@ -151,7 +154,6 @@ export default {
                         if ((frecuenciaMax < array[e] && array[e] < auxMax) || (frecuenciaMax < array[e] && array[e] > auxMax && i == 0)) {
                             frecuenciaMax = array[e]
                             id = e + 1
-                            console.log(e)
                         }
                     }
                     auxMax = frecuenciaMax
