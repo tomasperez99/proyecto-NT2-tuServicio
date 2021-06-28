@@ -5,11 +5,13 @@
         <div>{{this.resenias}}</div>
         <div>{{this.solicitantes}}</div>
         <div>{{this.solicitudes}}</div> -->
-        <div>{{this.getTopsRubros()}}</div>
+        
         <div>Rubro mas solicitado: {{this.getFromList('id', this.rubros, this.rubroMasSolicitado).nombre}}</div>
         <div>Rubro menos solicitado: {{this.getFromList('id', this.rubros, this.rubroMenosSolicitado).nombre}}</div>
         <div>{{this.trabajadoresConMasSolicitudes}}</div>
         <div>{{this.solicitantesMasActivos}}</div>
+        <div>{{this.trabajadoresMejorRating}}</div>
+        <div>{{this.trabajadoresPeorRating}}</div>
     </div>
 </template>
 <script>
@@ -36,60 +38,96 @@ export default {
         }
     },
     methods: {
+
+        init(){
+            this.getTopTrabajadores()
+            this.getTopSolicitantes()
+            this.getTopsRubros()
+            this.getTrabajadoresRating()
+        },
         
         getTopTrabajadores() {
             let frecuenciaTrabajadores = this.getFrecuenciasArray(this.solicitudes, this.trabajadores, 'idTrabajador')
-            //console.log(frecuenciaTrabajadores)
-            this.trabajadoresConMasSolicitudes = this.getTopFrecuentes(frecuenciaTrabajadores, 5)
+            this.trabajadoresConMasSolicitudes = this.getTopFromArray(frecuenciaTrabajadores, 3)
         },
 
         getTopSolicitantes() {
             let frecuenciaSolicitantes = this.getFrecuenciasArray(this.solicitudes, this.solicitantes, 'idSolicitante')
-            //console.log(frecuenciaSolicitantes)
-            this.solicitantesMasActivos = this.getTopFrecuentes(frecuenciaSolicitantes, 5)
+            this.solicitantesMasActivos = this.getTopFromArray(frecuenciaSolicitantes, 2)
+        },
+
+        getTrabajadoresRating() {
+            let trabajador = {
+                id: null,
+                rating: 0,
+                count: 0
+            }
+            let ratingsTrabajadores = []
+            let i;
+            for (i = 0; i < this.trabajadores.length; i++) {
+                let trabajadorAux = JSON.parse(JSON.stringify(trabajador))
+                trabajadorAux.id = this.trabajadores[i].id
+                ratingsTrabajadores.push(trabajadorAux)
+            }
+            for (i = 0; i < this.resenias.length; i++) {
+                let solicitud = this.getFromList('id', this.solicitudes, this.resenias[i].idSolicitud)
+                let tr = this.getFromList('id', ratingsTrabajadores, solicitud.id)
+                tr.rating = tr.rating + this.resenias[i].rating
+                tr.count++
+            }
+            
+            let aux = [];
+            console.log(ratingsTrabajadores)
+            for (i = 0; i < ratingsTrabajadores.length; i++) {
+                aux.push(ratingsTrabajadores[i].rating / ratingsTrabajadores[i].count)
+            }
+
+            console.log(ratingsTrabajadores)
+            console.log(aux)
+            this.trabajadoresMejorRating = this.getTopFromArray(aux, 5, true)
+            this.trabajadoresPeorRating = this.getTopFromArray(aux, 5, false)
+
         },
         
-        getTopFrecuentes(arrayFrecuencia, top) {
-            //console.log(arrayFrecuencia)
+        getTopFromArray(array, top, max=true) {
             let i;
             let frecuenciaMax = 0;
-            let aux = frecuenciaMax + 1;
+            let auxMax;
+            let auxMin;
             let arrayTop = []
+
+            auxMax = frecuenciaMax + 1
+            auxMin = frecuenciaMax - 1
             for (i = 0; i < top; i++) {
                 let e;
-                let id; 1                                                                       
-                for(e = 0; e < arrayFrecuencia.length; e++) {
-                    if (frecuenciaMax < arrayFrecuencia[e] && (frecuenciaMax < aux || (frecuenciaMax > aux && i == 0))) {
-                        frecuenciaMax = arrayFrecuencia[e]
-                        id = e + 1
+                let id;
+
+                if(max) {
+                    
+                    for(e = 0; e < array.length; e++) {
+                        if ((frecuenciaMax < array[e] && array[e] < auxMax) || (frecuenciaMax < array[e] && array[e] > auxMax && i == 0)) {
+                            frecuenciaMax = array[e]
+                            id = e + 1
+                            console.log(e)
+                        }
                     }
+                    auxMax = frecuenciaMax
+                    frecuenciaMax = 0
+                }else {
+                    for(e = 0; e < array.length; e++) {
+                        if ((frecuenciaMax > array[e] && array[e] > auxMin) || (frecuenciaMax > array[e] && array[e] < auxMin && i == 0)) {
+                            frecuenciaMax = array[e]
+                            id = e + 1
+                        }
+                    }
+                    auxMin = frecuenciaMax
+                    frecuenciaMax = array[0]
                 }
-                arrayTop.push(id)
-                aux = frecuenciaMax
-                frecuenciaMax = 0
+                arrayTop.push(id)                
             }
             return arrayTop
 
         },
-/* 
-        getTrabajadoresMasSolicitados() {
-            let frecuenciaTrabajadores = this.getFrecuenciasArray(this.solicitudes, this.trabajadores, 'idTrabajador')
-
-            let i;
-            let frecuenciaTrabajador = frecuenciaTrabajadores[0];
-            let aux = frecuenciaTrabajador + 1;
-            for (i = 0; i < 5; i++) {
-                let e;
-                for(e = 0; e < frecuenciaTrabajadores.length; e++) {
-                    if (frecuenciaTrabajador < frecuenciaTrabajadores[e] && (frecuenciaTrabajador < aux || (frecuenciaTrabajador > aux && e == 0))) {
-                        frecuenciaTrabajador = frecuenciaTrabajadores[e]
-                    }
-                }
-                aux = frecuenciaTrabajador
-                frecuenciaTrabajador = frecuenciaTrabajadores[e]
-            }
-
-        }, */
 
         getFrecuenciasArray(arrayA, arrayB, key) {
             let total = []
@@ -135,42 +173,11 @@ export default {
                 }
             }
         },
-        getRubros() {
-            axios.get(this.url_rubros)
-                    .then((response) => {
-                        this.rubros = response.data;
-                    })
-                    .catch();
+        getAxios(url) {
+            var response = axios.get(url)
+            return response
         },
-        getSolicitudes() {
-            axios.get(this.url_solicitudes)
-                    .then((response) => {
-                        this.solicitudes = response.data;
-                    })
-                    .catch();
-        },
-        getTrabajadores() {
-            axios.get(this.url_trabajadores)
-                    .then((response) => {
-                        this.trabajadores = response.data;
-                    })
-                    .catch();
 
-        },
-        getSolicitantes() {
-            axios.get(this.url_solicitantes)
-                    .then((response) => {
-                        this.solicitantes = response.data;
-                    })
-                    .catch();
-        },
-        getResenias() {
-            axios.get(this.url_resenias)
-                    .then((response) => {
-                        this.resenias = response.data;
-                    })
-                    .catch();
-        },
         getFromList(key, list, value) {
             let i;
             for (i = 0; i < list.length; i++) {
@@ -181,11 +188,32 @@ export default {
         }
     },
     created() {
-        this.getRubros()
-        this.getTrabajadores()
-        this.getSolicitantes()
-        this.getResenias()
-        this.getSolicitudes()
+        this.getAxios(this.url_solicitudes)
+            .then((response) => {
+                        this.solicitudes = response.data;
+                        this.getAxios(this.url_trabajadores)
+                            .then((response) => {
+                                this.trabajadores = response.data;
+                                this.getAxios(this.url_solicitantes)
+                                    .then((response) => {
+                                    this.solicitantes = response.data;
+                                    this.getAxios(this.url_rubros)
+                                        .then((response) => {
+                                            this.rubros = response.data;
+                                            this.getAxios(this.url_resenias)
+                                                .then((response) => {
+                                                this.resenias = response.data;
+                                                this.init()
+                                                })
+                                                .catch();
+                                                    })
+                                        .catch();
+                                })
+                                .catch();
+                            })
+                            .catch();
+                    })
+                    .catch();  
     }
 }
 </script>
