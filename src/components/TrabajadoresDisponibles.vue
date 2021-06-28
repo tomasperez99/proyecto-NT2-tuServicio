@@ -130,19 +130,20 @@ td {
 
 .divBackround {
   background-color: rgb(240, 240, 240);
-  width: 150%;
+  
   border: 10px;
   padding: 50px;
-  margin: 20px;
+ 
   border-radius: 10px;
 }
 .divTrabajador {
-  margin: 10px;
+  margin: 50px;
   border: 2px solid rgb(200, 200, 200);
   border-radius: 10px;
   background-color: rgb(241, 241, 241);
   display: inline-block;
   width: 120%;
+ 
 }
 .divTrabajadorNombre {
   background-color: rgb(216, 216, 216);
