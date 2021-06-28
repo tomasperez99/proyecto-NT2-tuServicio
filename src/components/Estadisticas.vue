@@ -11,7 +11,6 @@
         <div>{{this.trabajadoresConMasSolicitudes}}</div>
         <div>{{this.solicitantesMasActivos}}</div>
         <div>{{this.trabajadoresMejorRating}}</div>
-        <div>{{this.trabajadoresPeorRating}}</div>
     </div>
 </template>
 <script>
@@ -33,7 +32,6 @@ export default {
             rubroMenosSolicitado: null,
             trabajadoresConMasSolicitudes: [],
             trabajadoresMejorRating: [],
-            trabajadoresPeorRating: [],
             solicitantesMasActivos: []
         }
     },
@@ -84,25 +82,20 @@ export default {
 
             console.log(ratingsTrabajadores)
             console.log(aux)
-            this.trabajadoresMejorRating = this.getTopFromArray(aux, 5, true)
-            this.trabajadoresPeorRating = this.getTopFromArray(aux, 5, false)
+            this.trabajadoresMejorRating = this.getTopFromArray(aux, 3)
 
         },
         
-        getTopFromArray(array, top, max=true) {
+        getTopFromArray(array, top) {
             let i;
             let frecuenciaMax = 0;
             let auxMax;
-            let auxMin;
             let arrayTop = []
 
             auxMax = frecuenciaMax + 1
-            auxMin = frecuenciaMax - 1
             for (i = 0; i < top; i++) {
                 let e;
                 let id;
-
-                if(max) {
                     
                     for(e = 0; e < array.length; e++) {
                         if ((frecuenciaMax < array[e] && array[e] < auxMax) || (frecuenciaMax < array[e] && array[e] > auxMax && i == 0)) {
@@ -113,20 +106,10 @@ export default {
                     }
                     auxMax = frecuenciaMax
                     frecuenciaMax = 0
-                }else {
-                    for(e = 0; e < array.length; e++) {
-                        if ((frecuenciaMax > array[e] && array[e] > auxMin) || (frecuenciaMax > array[e] && array[e] < auxMin && i == 0)) {
-                            frecuenciaMax = array[e]
-                            id = e + 1
-                        }
-                    }
-                    auxMin = frecuenciaMax
-                    frecuenciaMax = array[0]
-                }
+                
                 arrayTop.push(id)                
             }
             return arrayTop
-
         },
 
         getFrecuenciasArray(arrayA, arrayB, key) {
