@@ -97,6 +97,7 @@ export default {
 <style lang="css">
 h1 {
     padding: 25px;
+    
 }
 h2 {
     padding-top: 25px;
