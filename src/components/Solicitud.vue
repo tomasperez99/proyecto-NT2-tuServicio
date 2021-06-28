@@ -20,7 +20,7 @@
                     </b-col>
                 </b-row>
                 <div style="margin-top: 25px">
-                    <button type="button" class="btn btn-primary" v-if="this.solicitud.estado == 3 && !this.showresenia" @click="mostrarResenia()">Dejar Reseña</button>
+                    <button type="button" class="btn btn-primary" v-if="this.solicitud.estado == 2 && !this.showresenia" @click="mostrarResenia()">Dejar Reseña</button>
                     <Resenia v-if="this.showresenia"></Resenia>
                 </div>
             </div>
@@ -97,7 +97,7 @@ export default {
 <style lang="css">
 h1 {
     padding: 25px;
-    
+
 }
 h2 {
     padding-top: 25px;
