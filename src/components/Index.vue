@@ -38,10 +38,13 @@ export default {
   props: {
     msg: String
   },
+
   computed: {
+
       cantProfesionales() {
           return this.$store.state.cantProfesionales
       },
+    
       cantAvisos() {
           return this.$store.state.cantAvisos
       }
@@ -70,6 +73,7 @@ h1 {
 #busquedaIndex{
     padding-left: 10px;
     width: 400px;
+    height: 20px;
     padding: 17px;
 }
 

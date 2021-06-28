@@ -95,7 +95,9 @@ export default {
       id: this.$route.params.id,
     };
   },
+
   methods: {
+
     getTrabajador() {
       axios
         .get(this.url_trabajadores + this.id)
@@ -104,6 +106,7 @@ export default {
         })
         .catch();
     },
+
     checkSolicitud() {        
         let nombre = document.getElementById('nombre')
         let email = document.getElementById('email')
@@ -116,6 +119,7 @@ export default {
             this.enviarSolicitud()
         }
     },
+
     enviarSolicitud() {
       let nombre = document.getElementById("nombre").value;
       let email = document.getElementById("email").value;
@@ -123,7 +127,6 @@ export default {
       let mensaje = document.getElementById("mensaje").value;
 
       this.postSolicitante(nombre, email, telefono).then((response) => {
-
         if (response.status == 201) {
             let idSolicitante = response.data.id
             console.log('Id Solicitante: ' + idSolicitante)
@@ -141,8 +144,8 @@ export default {
             })
         }
       })
-
     },
+
     postSolicitante(nombre, email, telefono) {
         var response = axios.post(this.url_solicitante, {
           nombre: nombre,
@@ -151,6 +154,7 @@ export default {
         })
         return response
     },
+
     postSolicitud(idTrabajador, idSolicitante, mensaje) {
         var response = axios.post(this.url_solicitud, {
           idTrabajador: idTrabajador,
@@ -160,6 +164,7 @@ export default {
         })
         return response
     }
+
   },
   created() {
     this.getTrabajador();

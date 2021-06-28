@@ -46,6 +46,7 @@ export default {
             header: null
         }
     },
+
     methods: {
         getSolicitud() {
             axios.get(this.url_solicitud + this.id)
@@ -64,6 +65,7 @@ export default {
                             this.header = "404: No existe esa Solicitud"
                     });
         },
+
         getTrabajador(id) {
             axios.get(this.url_trabajadores + id)
                 .then((response) => {
@@ -71,6 +73,7 @@ export default {
                 })
                 .catch();
         },
+
         getSolicitante(id) {
             axios.get(this.url_solicitante + id)
                 .then((response) => {
@@ -78,11 +81,14 @@ export default {
                 })
                 .catch();
         },
+
         mostrarResenia() {
             this.showresenia = !this.showresenia
             console.log(this.showresenia)
         }
+
     },
+
     created() {
         this.getSolicitud()
     }
@@ -91,8 +97,6 @@ export default {
 <style lang="css">
 h1 {
     padding: 25px;
-    border-color:rgb(116, 116, 116);
-    border: 2px solid;
 }
 h2 {
     padding-top: 25px;

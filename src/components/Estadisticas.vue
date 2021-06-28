@@ -133,11 +133,7 @@ export default {
             for (i = 0; i < ratingsTrabajadores.length; i++) {
                 aux.push(ratingsTrabajadores[i].rating / ratingsTrabajadores[i].count)
             }
-
-            console.log(ratingsTrabajadores)
-            console.log(aux)
             this.IDTrabajadoresMejorRating = this.getTopFromArray(aux, 3)
-
         },
         
         getTopFromArray(array, top) {
@@ -182,6 +178,7 @@ export default {
 
             return frecuencias
         },
+
         getTopsRubros() {
             let rubrosSolicitudes = []
             let i;
@@ -210,6 +207,7 @@ export default {
                 }
             }
         },
+
         getAxios(url) {
             var response = axios.get(url)
             return response
@@ -224,6 +222,7 @@ export default {
             }
         }
     },
+
     created() {
         this.getAxios(this.url_solicitudes)
             .then((response) => {
@@ -243,7 +242,7 @@ export default {
                                                 this.init()
                                                 })
                                                 .catch();
-                                                    })
+                                        })
                                         .catch();
                                 })
                                 .catch();
