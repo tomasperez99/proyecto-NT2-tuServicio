@@ -72,8 +72,7 @@
 
               <button
                 v-on:click="checkSolicitud()"
-                class="btn btn-primary btn-block"
-              >
+                class="btn btn-primary btn-block">
                 Enviar
               </button>
             </div>
