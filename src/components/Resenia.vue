@@ -86,7 +86,7 @@ export default {
     }
 
     .starRating{
-        padding-left: 400px;
+        padding-left: 600px;
     }
 
     .inputText{
